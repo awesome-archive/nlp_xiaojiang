@@ -22,11 +22,21 @@
     - bert + r-cnn(keras) approach 0.78~0.79% acc of weBank Intelligent Customer Service Question Matching Competition
     - bert + avt-cnn(keras) approach 0.78~0.79% acc of weBank Intelligent Customer Service Question Matching Competition
 
+# Ner
+    - bert命名实体提取(bert12层embedding + bilstm + crf)
+        - args.py(配置一些参数)
+        - keras_bert_embedding.py(bert embedding)
+        - keras_bert_layer.py(layer层, 主要有CRF和NonMaskingLayer)
+        - keras_bert_ner_bi_lstm.py(主函数, 定义模型、数据预处理和训练预测等)
+        - layer_crf_bojone.py(CRF层, 未使用)
 
 # FeatureProject
     - bert句向量、文本相似度
         - bert/extract_keras_bert_feature.py:提取bert句向量特征
-        - bert/tet_bert_keras_sim.py:测试bert句向量cosin相似度
+        - bert/tet_bert_keras_sim.py:测试xlnet句向量cosin相似度
+    - xlnet句向量、文本相似度
+        - xlnet/extract_keras_xlnet_feature.py:提取bert句向量特征
+        - xlnet/tet_xlnet_keras_sim.py:测试bert句向量cosin相似度
     - normalization_util指的是数据归一化
         - 0-1归一化处理
         - 均值归一化
@@ -76,12 +86,15 @@
     - chinese_L-12_H-768_A-12（谷歌预训练好的模型）
        github项目中只是上传部分数据，需要的前往链接: https://pan.baidu.com/s/1I3vydhmFEQ9nuPG2fDou8Q 提取码: rket
        解压后就可以啦
+    - chinese_xlnet_mid_L-24_H-768_A-12(哈工大训练的中文xlnet, mid, 24层, wiki语料+通用语料)
+        - 下载地址[https://github.com/ymcui/Chinese-PreTrained-XLNet](https://github.com/ymcui/Chinese-PreTrained-XLNet)
     - chinese_vector
         github项目中只是上传部分数据，需要的前往链接: https://pan.baidu.com/s/1I3vydhmFEQ9nuPG2fDou8Q 提取码: rket
         - 截取的部分word2vec训练词向量（自己需要下载全效果才会好）
         - w2v_model_wiki_char.vec、w2v_model_wiki_word.vec都只有部分
     - corpus
         github项目中只是上传部分数据，需要的前往链接: https://pan.baidu.com/s/1I3vydhmFEQ9nuPG2fDou8Q 提取码: rket
+        - ner(train、dev、test----人民日报语料)
         - webank(train、dev、test)
         - 小黄鸡和gossip问答预料（数据没清洗）,chicken_and_gossip.txt
         - 微众银行和支付宝文本相似度竞赛数据， sim_webank.csv
